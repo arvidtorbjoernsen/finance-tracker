@@ -1,5 +1,13 @@
-@import 'bootstrap/dist/css/bootstrap';
+
 
 .page-margin{
   padding: 0 3rem;
+}
+
+.no-right-padding{
+  padding-right: 0 !important;
+}
+
+.no-left-padding{
+  padding-left: 0 !important;
 }
