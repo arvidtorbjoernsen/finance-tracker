@@ -1,6 +1,5 @@
-<h1>My Portfolio</h1>
+<h1 class="mt-2 mb-5">My Portfolio</h1>
 
-<div class="search-area">
   <h3>Seach Stocks</h3>
   <%= form_tag search_stock_path, remote: true, method: :get do %>
     <div class="form-group row">
@@ -14,7 +13,11 @@
       </div>
     </div>
   <% end %>
-</div>
-<div id="results">
-
-</div>
+  <div id="results">
+    <%= render 'result' %>
+  </div>
+<% if !@tracked_stocks.empty? %>
+  <%= render 'stocks/list' %>
+<% else %>
+  <%= "You are currently not tracking anny stocks!" %>
+<% end %>

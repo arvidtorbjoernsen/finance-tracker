@@ -1,4 +1,4 @@
-<h1>Welcome to the Finance Tracker spp</h1>
+<h1>Welcome to the Finance Tracker <%= current_user.full_name %></h1>
 
 <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
 
