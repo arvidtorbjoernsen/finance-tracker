@@ -8,7 +8,7 @@ class UserStocksController < ApplicationController
       stock.save
     end
     @user_stock = UserStock.create(user: current_user, stock: stock)
-    flash[:notice] = "Stock #{stock.name} was successfylly added to your portfolio"
+    flash[:notice] = "#{stock.name} was successfylly added to your portfolio"
     redirect_to my_portfolio_path
   end
 
@@ -16,7 +16,15 @@ class UserStocksController < ApplicationController
     stock = Stock.find(params[:id])
     user_stock = UserStock.where(user_id: current_user.id, stock_id: stock.id).first
     user_stock.destroy
-    flash[:notice] = "#{stock.ticker} was successfully removed from portfolio"
+    flash[:notice] = "#{stock.name} was successfully removed from portfolio"
+    redirect_to my_portfolio_path
+  end
+
+  def update
+    new_stock = Stock.new_lookup(params[:id])
+    old_stock = Stock.check_db(params[:id])
+    old_stock.last_price = new_stock.last_price
+    old_stock.save
     redirect_to my_portfolio_path
   end
 end

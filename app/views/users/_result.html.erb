@@ -1,8 +1,6 @@
 <div class="result-block">
   <%= render 'layouts/messages'%>
 </div>
-
-
 <% if @stock%>
   <div class="card card-header result-block mb-3">
     <strong>Symbol: </strong><%= @stock.ticker %>
@@ -18,7 +16,6 @@
         <% elsif !current_user.under_stock_limit? %>
           10 stocks
         <% end %>
-
       </span>
     <% end %>
   </div>
